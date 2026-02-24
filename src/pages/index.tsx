@@ -148,10 +148,54 @@ export default function Home() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button size="lg" className="text-lg h-14 px-8 shadow-xl hover:shadow-2xl transition-shadow" asChild>
+                <Button 
+                  size="lg" 
+                  className="relative text-lg h-14 px-8 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 shadow-xl hover:shadow-2xl transition-all duration-300 group overflow-hidden"
+                  asChild
+                >
                   <Link href="/download-spec">
-                    <Download className="mr-2 w-5 h-5" />
-                    Download Full Specification
+                    {/* Animated background glow */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300"
+                      animate={{
+                        scale: [1, 1.2, 1],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    />
+                    
+                    {/* Pulse ring */}
+                    <motion.div
+                      className="absolute inset-0 rounded-md border-2 border-white/50"
+                      animate={{
+                        scale: [1, 1.1, 1],
+                        opacity: [0.5, 0, 0.5],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    />
+                    
+                    <span className="relative z-10 flex items-center gap-2">
+                      <motion.div
+                        animate={{
+                          y: [0, -3, 0],
+                        }}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      >
+                        <Download className="w-5 h-5" />
+                      </motion.div>
+                      Download Full Specification
+                    </span>
                   </Link>
                 </Button>
               </motion.div>
@@ -159,10 +203,35 @@ export default function Home() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button size="lg" variant="outline" className="text-lg h-14 px-8 backdrop-blur-sm" asChild>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="relative text-lg h-14 px-8 backdrop-blur-sm border-2 hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-all duration-300 group overflow-hidden"
+                  asChild
+                >
                   <a href="#features">
-                    <FileText className="mr-2 w-5 h-5" />
-                    Explore Features
+                    {/* Hover glow effect */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    />
+                    
+                    <span className="relative z-10 flex items-center gap-2">
+                      <FileText className="w-5 h-5" />
+                      Explore Features
+                      <motion.div
+                        className="inline-block"
+                        animate={{
+                          x: [0, 3, 0],
+                        }}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      >
+                        <ArrowRight className="w-4 h-4" />
+                      </motion.div>
+                    </span>
                   </a>
                 </Button>
               </motion.div>
